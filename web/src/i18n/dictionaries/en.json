@@ -106,6 +106,67 @@
   },
   "placeholder": {
     "title": "Coming in the next step",
-    "body": "This section is planned and will be built after contacts."
+    "body": "This section is planned for an upcoming step."
+  },
+  "deals": {
+    "title": "Deals",
+    "summary": "{count} open deals worth {total}",
+    "forecast": "Weighted forecast {amount}",
+    "forecastHint": "Each open deal counts at its stage's chance of closing.",
+    "new": "New deal",
+    "stages": {
+      "lead": "Lead",
+      "qualified": "Qualified",
+      "proposal": "Proposal",
+      "negotiation": "Negotiation",
+      "won": "Won",
+      "lost": "Lost"
+    },
+    "chance": "{p}% chance",
+    "closedWindow": "Closed in the last 30 days",
+    "columnCount": "{count} deals",
+    "emptyColumn": "No deals here",
+    "noContact": "No contact",
+    "closeBy": "Close by {date}",
+    "overdue": "Overdue since {date}",
+    "closedOn": "Closed {date}",
+    "edit": "Edit {title}",
+    "move": "Move {title}",
+    "boardLabel": "Sales pipeline",
+    "loading": "Loading the pipeline…",
+    "moveFailed": "That move wasn't saved, so the deal went back to where it was. Try again.",
+    "a11y": {
+      "instructions": "To move a deal, focus its handle and press space or enter. Use the arrow keys to move it between stages and up or down within a stage, then press space or enter to drop it, or escape to cancel.",
+      "pickedUp": "Picked up {title}, in {stage}.",
+      "over": "{title} is over {stage}.",
+      "dropped": "{title} moved to {stage}.",
+      "cancelled": "Moving {title} was cancelled. It stays in {stage}."
+    },
+    "form": {
+      "createTitle": "New deal",
+      "editTitle": "Edit deal",
+      "title": "Deal name",
+      "titlePlaceholder": "Website redesign",
+      "amount": "Amount (₪)",
+      "stage": "Stage",
+      "contact": "Contact",
+      "noContact": "No contact",
+      "contactHint": "The deal is linked to the contact's company automatically.",
+      "expectedClose": "Expected close date",
+      "create": "Add deal",
+      "save": "Save changes",
+      "saving": "Saving…",
+      "cancel": "Cancel",
+      "close": "Close",
+      "delete": "Delete deal",
+      "confirmDelete": "Delete “{title}”? Its stage history is deleted with it.",
+      "errors": {
+        "title": "Enter a name for the deal.",
+        "amount": "Enter an amount of 0 or more.",
+        "stage": "Choose a stage.",
+        "generic": "The deal wasn't saved. Check your connection and try again."
+      }
+    },
+    "newIn": "New deal in {stage}"
   }
 }
