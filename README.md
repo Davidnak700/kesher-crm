@@ -3,6 +3,14 @@
 A bilingual (Hebrew / English) CRM for small businesses: contacts, a kanban sales pipeline, tasks and a KPI dashboard.
 Built as a portfolio project with Next.js 16 and Supabase.
 
+**Live demo: https://kesher-crm-rose.vercel.app** — press *Open the demo account* (or *כניסה לחשבון הדגמה*); no sign-up needed.
+
+![Dashboard in English](docs/screenshots/dashboard-en.jpg)
+
+| Deals board, Hebrew (right-to-left) | Dashboard, Hebrew |
+|---|---|
+| ![Kanban deals board in Hebrew](docs/screenshots/deals-he.jpg) | ![Dashboard in Hebrew](docs/screenshots/dashboard-he.jpg) |
+
 > **Status:** all six planned steps are done: database, sign-in, bilingual layout, contacts, deals board, contact page, tasks and dashboard.
 
 ## What works today
