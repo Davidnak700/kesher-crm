@@ -37,7 +37,7 @@ export async function proxy(request: NextRequest) {
   }
 
   if (userId && isLoginPage) {
-    return redirectWithCookies(new URL(`/${first}/contacts`, request.url), response);
+    return redirectWithCookies(new URL(`/${first}/dashboard`, request.url), response);
   }
 
   // Remember the language for the next visit to "/".

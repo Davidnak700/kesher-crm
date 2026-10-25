@@ -9,7 +9,7 @@ import { formatMoney } from "@/lib/format";
 import { fullName } from "@/lib/names";
 import { ActivityComposer, DeleteActivityButton } from "./activity";
 import { ContactActions } from "./contact-actions";
-import { TaskList, type TaskItem } from "./task-list";
+import { TaskList, type TaskItem } from "@/components/tasks/task-list";
 
 const dateTimeLocale: Record<Locale, string> = { he: "he-IL", en: "en-GB" };
 
@@ -64,14 +64,15 @@ export async function ContactDetailView({ params }: { params: Promise<{ id: stri
       title: task.title,
       priority: task.priority,
       done: Boolean(task.completed_at),
+      group: "open",
       overdue,
       meta: [
         task.completed_at
-          ? format(t.tasks.doneOn, { date: dateOnly.format(new Date(task.completed_at)) })
+          ? format(dict.tasks.doneOn, { date: dateOnly.format(new Date(task.completed_at)) })
           : task.due_at
-            ? format(overdue ? t.tasks.overdue : t.tasks.dueOn, { date: dateOnly.format(new Date(task.due_at)) })
+            ? format(overdue ? dict.tasks.overdue : dict.tasks.dueOn, { date: dateOnly.format(new Date(task.due_at)) })
             : null,
-        task.deal ? format(t.tasks.forDeal, { deal: task.deal.title }) : null,
+        task.deal ? format(dict.tasks.forDeal, { deal: task.deal.title }) : null,
       ].filter((x): x is string => Boolean(x)),
     };
   });
@@ -204,8 +205,15 @@ export async function ContactDetailView({ params }: { params: Promise<{ id: stri
           </section>
 
           <section aria-labelledby="tasks-title" className="rounded-xl border border-line bg-surface p-5">
-            <h2 id="tasks-title" className="text-lg font-semibold">{t.tasks.title}</h2>
-            <TaskList contactId={contact.id} tasks={taskItems} t={t.tasks} />
+            <h2 id="tasks-title" className="text-lg font-semibold">{dict.tasks.title}</h2>
+            <TaskList
+              tasks={taskItems}
+              groups={[{ key: "open" }]}
+              completed="collapsed"
+              emptyText={dict.tasks.empty}
+              t={dict.tasks}
+              newTask={{ contactId: contact.id }}
+            />
           </section>
         </div>
       </div>

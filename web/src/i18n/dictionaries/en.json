@@ -104,10 +104,6 @@
       "page": "Page {page} of {pages}"
     }
   },
-  "placeholder": {
-    "title": "Coming in the next step",
-    "body": "This section is planned for an upcoming step."
-  },
   "deals": {
     "title": "Deals",
     "summary": "{count} open deals worth {total}",
@@ -190,36 +186,6 @@
       "openBoard": "Open the deals board",
       "total": "{count} deals, {won} won"
     },
-    "tasks": {
-      "title": "Tasks",
-      "empty": "No open tasks.",
-      "add": "Add task",
-      "newLabel": "New task",
-      "titleLabel": "Task",
-      "titlePlaceholder": "Call back about the proposal",
-      "due": "Due date",
-      "priority": "Priority",
-      "priorities": {
-        "low": "Low",
-        "medium": "Medium",
-        "high": "High"
-      },
-      "dueOn": "Due {date}",
-      "overdue": "Overdue since {date}",
-      "doneOn": "Done {date}",
-      "forDeal": "For {deal}",
-      "markDone": "Mark “{title}” as done",
-      "markOpen": "Mark “{title}” as not done",
-      "delete": "Delete task “{title}”",
-      "completed": "Completed ({count})",
-      "saving": "Adding…",
-      "failed": "That change wasn't saved. Try again.",
-      "errors": {
-        "title": "Write what needs to be done.",
-        "generic": "The task wasn't added. Check your connection and try again."
-      },
-      "cancel": "Cancel"
-    },
     "timeline": {
       "title": "Activity",
       "empty": "Nothing logged yet. Add a note after your next call or meeting.",
@@ -244,6 +210,98 @@
         "body": "Write what happened.",
         "generic": "The activity wasn't saved. Check your connection and try again."
       }
+    }
+  },
+  "tasks": {
+    "title": "Tasks",
+    "empty": "No open tasks.",
+    "add": "Add task",
+    "newLabel": "New task",
+    "titleLabel": "Task",
+    "titlePlaceholder": "Call back about the proposal",
+    "due": "Due date",
+    "priority": "Priority",
+    "priorities": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "dueOn": "Due {date}",
+    "overdue": "Overdue since {date}",
+    "doneOn": "Done {date}",
+    "forDeal": "For {deal}",
+    "markDone": "Mark “{title}” as done",
+    "markOpen": "Mark “{title}” as not done",
+    "delete": "Delete task “{title}”",
+    "completed": "Completed ({count})",
+    "saving": "Adding…",
+    "failed": "That change wasn't saved. Try again.",
+    "errors": {
+      "title": "Write what needs to be done.",
+      "generic": "The task wasn't added. Check your connection and try again."
+    },
+    "cancel": "Cancel",
+    "summary": "{open} open, {overdue} overdue",
+    "views": {
+      "label": "Show",
+      "open": "Open",
+      "done": "Completed"
+    },
+    "groups": {
+      "overdue": "Overdue",
+      "today": "Today",
+      "week": "Next 7 days",
+      "later": "Later",
+      "none": "No due date",
+      "done": "Completed"
+    },
+    "emptyAll": "Nothing to do. New tasks appear here, and on the contact they belong to.",
+    "emptyDone": "No completed tasks yet.",
+    "contact": "Contact",
+    "noContact": "No contact",
+    "loading": "Loading tasks…",
+    "new": "New task"
+  },
+  "dashboard": {
+    "title": "Dashboard",
+    "loading": "Loading the dashboard…",
+    "wonThisMonth": "Won this month",
+    "vsLastMonth": "{delta} vs last month",
+    "noLastMonth": "Nothing was won last month",
+    "up": "up",
+    "down": "down",
+    "openPipeline": "Open pipeline",
+    "openDeals": "{count} open deals",
+    "forecast": "Weighted forecast",
+    "forecastHint": "Open deals × their stage's chance of closing",
+    "winRate": "Win rate",
+    "winRateHint": "{won} won of {closed} closed, last 6 months",
+    "noClosed": "No deals closed in the last 6 months",
+    "avgDeal": "Average won deal",
+    "avgDealHint": "Last 6 months",
+    "revenue": {
+      "title": "Won revenue by month",
+      "subtitle": "Last 6 months, by the date each deal closed",
+      "soFar": "so far",
+      "tableToggle": "Show as a table",
+      "month": "Month",
+      "amount": "Won",
+      "deals": "Deals won",
+      "tooltipDeals": "{count} deals won"
+    },
+    "funnel": {
+      "title": "How far deals get",
+      "subtitle": "Every deal, counted at each stage it reached",
+      "conversion": "{pct}% of the previous stage"
+    },
+    "attention": {
+      "title": "Needs attention",
+      "overdueTasks": "Overdue tasks",
+      "dueToday": "Due today",
+      "openTasks": "Open the tasks",
+      "pastClose": "Deals past their expected close date",
+      "noPastClose": "No open deals are past their close date.",
+      "closeWas": "Expected {date}"
     }
   }
 }

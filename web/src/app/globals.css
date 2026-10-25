@@ -23,6 +23,7 @@
   --danger-soft: #fdecea;
   --danger-ink: #ffffff;
   --focus: #1f7a6b;
+  --chart: #008a72; /* validated: chroma, lightness band and 3:1 contrast on the light surface */
   color-scheme: light;
 }
 
@@ -49,6 +50,7 @@
     --danger-soft: #3b1714;
     --danger-ink: #2a0b08;
     --focus: #5cc8b3;
+    --chart: #2fa38d; /* validated against the dark surface */
     color-scheme: dark;
   }
 }
@@ -74,6 +76,7 @@
   --color-danger: var(--danger);
   --color-danger-soft: var(--danger-soft);
   --color-danger-ink: var(--danger-ink);
+  --color-chart: var(--chart);
   --font-sans: "Rubik Variable", system-ui, sans-serif;
 }
 

@@ -9,7 +9,7 @@ export type SignInState = { error: "invalid" | "demoUnavailable" | null };
 /** Only allow redirects back into this app, in the current language. */
 function safeNext(next: FormDataEntryValue | null, locale: string) {
   const value = typeof next === "string" ? next : "";
-  return value.startsWith(`/${locale}/`) && !value.startsWith("//") ? value : `/${locale}/contacts`;
+  return value.startsWith(`/${locale}/`) && !value.startsWith("//") ? value : `/${locale}/dashboard`;
 }
 
 export async function signIn(_prev: SignInState, formData: FormData): Promise<SignInState> {
