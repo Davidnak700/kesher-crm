@@ -22,6 +22,7 @@ Built as a portfolio project with Next.js 16 and Supabase.
 - **Contact page**: details, the contact's deals, their tasks (tick off, add, delete) and an activity timeline that mixes logged notes, calls, emails and meetings with automatic entries for every move of their deals through the pipeline.
 - **Tasks**: every open task grouped into Overdue, Today, Next 7 days, Later and No due date, linked to its contact and deal; tick off, add (optionally for a contact), delete; a Completed view.
 - **Deals board (kanban)**: drag deals between stages with mouse, touch or keyboard. Each column shows its total and the stage's chance of closing; the header shows the pipeline value and the probability-weighted forecast. Moves appear instantly and roll back if the save fails. Won / Lost show the last 30 days. Screen reader announcements in both languages.
+- **Self-healing demo**: a `pg_cron` job rebuilds the shared demo account every night, so a visitor who deletes everything doesn't break it for the next one.
 - **Security in the database**, not just the UI: Row Level Security on every table, composite foreign keys so no one can link to another user's records, owner set by the database from the session.
 
 ## Stack
@@ -51,7 +52,7 @@ web/
 
 ## Run it locally
 
-1. **Supabase project.** Create one at supabase.com. In the SQL Editor run the two files in `supabase/migrations/` in order.
+1. **Supabase project.** Create one at supabase.com. In the SQL Editor run the files in `supabase/migrations/` in order (the third one schedules a nightly reset of the demo account with `pg_cron`; change the demo email in it if yours differs).
 2. **Demo user.** Authentication → Users → Add user (e.g. `demo@yourdomain.com`, auto-confirm). Then in the SQL Editor:
    ```sql
    select public.seed_demo_data((select id from auth.users where email = 'demo@yourdomain.com'));
