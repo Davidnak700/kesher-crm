@@ -10,7 +10,7 @@ export default async function AppLayout({ children }: LayoutProps<"/[locale]">) 
   const locale = await getLocale();
   const dict = await getDictionary(locale);
 
-  const items = (["dashboard", "contacts", "deals", "tasks"] as const).map((segment) => ({
+  const items = (["dashboard", "contacts", "deals", "tasks", "analytics"] as const).map((segment) => ({
     segment,
     href: `/${locale}/${segment}`,
     label: dict.nav[segment],

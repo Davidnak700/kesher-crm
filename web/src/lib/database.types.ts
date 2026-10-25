@@ -230,6 +230,57 @@ export type Database = {
         Row: { stage_id: string; key: string | null; name: string | null; position: number; deals_reached: number };
         Relationships: [];
       };
+      closed_deals: {
+        Row: {
+          id: string;
+          owner_id: string;
+          title: string;
+          amount: number;
+          outcome: Database["public"]["Enums"]["stage_kind"];
+          created_at: string;
+          closed_at: string;
+          cycle_days: number;
+          source: Database["public"]["Enums"]["contact_source"] | null;
+        };
+        Relationships: [];
+      };
+      sales_cycle_summary: {
+        Row: {
+          outcome: Database["public"]["Enums"]["stage_kind"];
+          deals: number;
+          avg_days: number;
+          median_days: number;
+          p25_days: number;
+          p75_days: number;
+        };
+        Relationships: [];
+      };
+      stage_durations: {
+        Row: {
+          stage_id: string;
+          key: string | null;
+          name: string | null;
+          position: number;
+          stays: number;
+          avg_days: number | null;
+          median_days: number | null;
+        };
+        Relationships: [];
+      };
+      source_performance: {
+        Row: {
+          source: Database["public"]["Enums"]["contact_source"];
+          deals: number;
+          won: number;
+          lost: number;
+          open: number;
+          win_rate_pct: number | null;
+          won_amount: number;
+          avg_won_amount: number | null;
+          median_days_to_win: number | null;
+        };
+        Relationships: [];
+      };
     };
     Functions: { [_ in never]: never };
     Enums: {

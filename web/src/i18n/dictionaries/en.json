@@ -9,6 +9,7 @@
     "contacts": "Contacts",
     "deals": "Deals",
     "tasks": "Tasks",
+    "analytics": "Analytics",
     "signOut": "Sign out",
     "switchLanguage": "עברית",
     "switchLanguageLabel": "Switch to Hebrew"
@@ -302,6 +303,60 @@
       "pastClose": "Deals past their expected close date",
       "noPastClose": "No open deals are past their close date.",
       "closeWas": "Expected {date}"
+    }
+  },
+  "analytics": {
+    "title": "Analytics",
+    "subtitle": "Two questions about your sales, answered from every deal you've had",
+    "loading": "Loading the analytics…",
+    "findings": "What the numbers say",
+    "days": "{n} days",
+    "cycle": {
+      "question": "How long does a sale take?",
+      "wonMedian": "Typical time to win",
+      "wonHint": "Median, from opening the deal to Won",
+      "lostMedian": "Typical time to lose",
+      "lostHint": "Median, from opening the deal to Lost",
+      "closed": "Closed deals",
+      "closedHint": "{won} won, {lost} lost",
+      "typicalWin": "A won deal typically closes in {median}; half of them take between {p25} and {p75}.",
+      "lostSooner": "Lost deals end sooner, after {lost}: a deal is usually lost early, not after a long negotiation.",
+      "bottleneck": "Deals wait longest at {stage}: {days} on average, {times}× the other stages. That's the stage to speed up.",
+      "stagesTitle": "Time in each stage",
+      "stagesSubtitle": "Average days before a deal moves on, from the stage history",
+      "slowest": "slowest",
+      "moves": "{count} moves",
+      "notMeasured": "not enough moves yet",
+      "empty": "Not enough closed deals yet. Once {min} deals are won or lost, this shows how long a sale takes."
+    },
+    "sources": {
+      "question": "Where do the best clients come from?",
+      "subtitle": "Every deal, grouped by how its contact found you",
+      "source": "Source",
+      "deals": "Deals",
+      "openCount": "{count} open",
+      "winRate": "Win rate",
+      "winRateOf": "{won} of {closed}",
+      "revenue": "Won revenue",
+      "avgDeal": "Average won deal",
+      "daysToWin": "Days to win",
+      "daysToWinHint": "median",
+      "fewClosed": "few closed deals",
+      "bestRate": "Highest win rate: {source} — {rate} of closed deals, won in {days} on median.",
+      "topRevenue": "Most revenue: {source} — {amount} from {won} won deals.",
+      "worstRate": "Lowest win rate: {source} — {rate}; {lost} of {closed} closed deals were lost.",
+      "tooSmall": "Left out of these conclusions (fewer than {min} closed deals): {list}.",
+      "empty": "No deals with a lead source yet. Set the source on a contact to see where your clients come from."
+    },
+    "method": {
+      "title": "How it's counted",
+      "items": [
+        "Sale length: from the day a deal was created to the day it moved to Won or Lost.",
+        "Typical means the median: half of the deals are faster and half slower, so one unusually slow deal doesn't skew it.",
+        "Time in stage: from entering a stage to the next move, taken from the stage history the database logs on every move. Deals still sitting in a stage are counted once they move.",
+        "Win rate: won ÷ (won + lost). Open deals are left out until they close.",
+        "A conclusion needs at least {min} closed deals; smaller groups are shown but marked."
+      ]
     }
   }
 }

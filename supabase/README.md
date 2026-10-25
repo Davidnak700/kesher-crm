@@ -30,6 +30,8 @@ erDiagram
 
 Dashboard views: `pipeline_summary` (count, total and probability-weighted forecast per stage), `monthly_sales` (won revenue, win rate, average deal), `funnel` (how far deals get).
 
+Analytics views: `closed_deals` (one row per won or lost deal with its cycle length and lead source), `sales_cycle_summary` (median and middle-half days to win and to lose), `stage_durations` (time in each stage, from the stage history with `LEAD() OVER (PARTITION BY deal_id …)`), `source_performance` (deals, win rate, revenue and days to win per lead source).
+
 ## Design decisions
 
 - **Row Level Security everywhere.** Every row has `owner_id`, filled automatically from `auth.uid()`. Policies let a user see and change only their own rows.
@@ -47,15 +49,17 @@ Dashboard views: `pipeline_summary` (count, total and probability-weighted forec
    ```sql
    select public.seed_demo_data((select id from auth.users where email = 'demo@yourdomain.com'));
    ```
-   This fills the account with ~6 months of data: 12 companies, 40 contacts, 48 deals, tasks and activities. Run it again any time to reset the demo.
+   This fills the account with ~6 months of synthetic data: 12 companies, 40 contacts, 64 deals, tasks and activities. Every timeline is consistent (a deal starts after its contact, stages pass in order, nothing is in the future), and a few patterns are built in for the analytics: referrals convert best, ads worst, and proposals are the slow stage. Run it again any time to reset the demo; the nightly `pg_cron` job does this for the shared demo account.
 
 ## Tests
 
-`tests/` runs the migrations on plain PostgreSQL with a small Supabase Auth stub and checks isolation between users, the composite keys, the stage triggers and the views:
+`tests/` runs the migrations on plain PostgreSQL with a small Supabase Auth stub and checks isolation between users, the composite keys, the stage triggers and the views. `analytics_test.sql` checks that the demo timelines are consistent, that the analytics views match hand counts, and that no one sees another user's analytics. (The `pg_cron` migration needs Supabase and is skipped here.)
 
 ```bash
 psql -d crm_test -f tests/supabase_stub.sql \
   -f migrations/20261025000000_init_schema.sql \
   -f migrations/20261025000100_demo_data.sql \
-  -f tests/rls_test.sql
+  -f migrations/20261025000300_analytics.sql \
+  -f tests/rls_test.sql \
+  -f tests/analytics_test.sql
 ```
