@@ -1,13 +1,25 @@
 "use client";
 
 import Link from "next/link";
+import { Suspense } from "react";
 import { useSelectedLayoutSegment } from "next/navigation";
 
 export type NavItem = { segment: string; href: string; label: string };
 
 export function NavLinks({ items, label }: { items: NavItem[]; label: string }) {
-  const active = useSelectedLayoutSegment();
+  // Which link is current depends on the URL, so it streams in; the links themselves are static.
+  return (
+    <Suspense fallback={<NavList items={items} label={label} active={null} />}>
+      <ActiveNavList items={items} label={label} />
+    </Suspense>
+  );
+}
 
+function ActiveNavList({ items, label }: { items: NavItem[]; label: string }) {
+  return <NavList items={items} label={label} active={useSelectedLayoutSegment()} />;
+}
+
+function NavList({ items, label, active }: { items: NavItem[]; label: string; active: string | null }) {
   return (
     <nav aria-label={label}>
       <ul className="flex gap-1 overflow-x-auto md:flex-col">

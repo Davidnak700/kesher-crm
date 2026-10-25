@@ -5,7 +5,11 @@ import type { Dictionary } from "@/i18n/get-dictionary";
 import { format } from "@/i18n/config";
 import { CONTACT_SOURCES, CONTACT_STATUSES } from "@/lib/contact-options";
 import { createContact, deleteContact, updateContact, type ContactFormState } from "./actions";
-import { fullName, type CompanyOption, type ContactRow } from "./contacts-manager";
+import type { ContactListItem } from "@/lib/data/contacts";
+import { fullName } from "@/lib/names";
+import type { CompanyOption } from "./contacts-manager";
+
+export type EditableContact = Omit<ContactListItem, "created_at">;
 
 const field =
   "w-full rounded-md border border-line bg-surface px-3 py-2 text-base text-ink placeholder:text-muted focus:border-brand focus:outline-none focus:ring-2 focus:ring-brand/25 aria-invalid:border-danger";
@@ -16,11 +20,14 @@ export function ContactDialog({
   companies,
   t,
   onClose,
+  onDeleted,
 }: {
-  contact: ContactRow | null;
+  contact: EditableContact | null;
   companies: CompanyOption[];
   t: Dictionary["contacts"];
   onClose: () => void;
+  /** Called after a successful delete, e.g. to leave the contact's own page. */
+  onDeleted?: () => void;
 }) {
   const dialogRef = useRef<HTMLDialogElement>(null);
   const f = t.form;
@@ -44,7 +51,10 @@ export function ContactDialog({
     if (!contact) return;
     startDelete(async () => {
       const result = await deleteContact(contact.id);
-      if (result.ok) dialogRef.current?.close();
+      if (result.ok) {
+        dialogRef.current?.close();
+        onDeleted?.();
+      }
       else setDeleteFailed(true);
     });
   }

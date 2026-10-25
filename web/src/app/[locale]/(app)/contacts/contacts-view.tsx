@@ -24,6 +24,7 @@ export async function ContactsView({ searchParams }: { searchParams: Promise<Rec
   return (
     <>
       <ContactsManager
+        basePath={`/${locale}/contacts`}
         countLabel={format(t.count, { count: total.toLocaleString(dateLocale[locale]) })}
         toolbar={<ContactsToolbar t={t} />}
         rows={rows}

@@ -168,5 +168,82 @@
       }
     },
     "newIn": "New deal in {stage}"
+  },
+  "contact": {
+    "back": "All contacts",
+    "edit": "Edit contact",
+    "details": "Details",
+    "email": "Email",
+    "phone": "Phone",
+    "company": "Company",
+    "position": "Role",
+    "source": "Came from",
+    "tags": "Tags",
+    "added": "Added",
+    "none": "—",
+    "loading": "Loading the contact…",
+    "notFoundTitle": "Contact not found",
+    "notFoundBody": "It may have been deleted, or the link is wrong.",
+    "deals": {
+      "title": "Deals",
+      "empty": "No deals with this contact yet.",
+      "openBoard": "Open the deals board",
+      "total": "{count} deals, {won} won"
+    },
+    "tasks": {
+      "title": "Tasks",
+      "empty": "No open tasks.",
+      "add": "Add task",
+      "newLabel": "New task",
+      "titleLabel": "Task",
+      "titlePlaceholder": "Call back about the proposal",
+      "due": "Due date",
+      "priority": "Priority",
+      "priorities": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      },
+      "dueOn": "Due {date}",
+      "overdue": "Overdue since {date}",
+      "doneOn": "Done {date}",
+      "forDeal": "For {deal}",
+      "markDone": "Mark “{title}” as done",
+      "markOpen": "Mark “{title}” as not done",
+      "delete": "Delete task “{title}”",
+      "completed": "Completed ({count})",
+      "saving": "Adding…",
+      "failed": "That change wasn't saved. Try again.",
+      "errors": {
+        "title": "Write what needs to be done.",
+        "generic": "The task wasn't added. Check your connection and try again."
+      },
+      "cancel": "Cancel"
+    },
+    "timeline": {
+      "title": "Activity",
+      "empty": "Nothing logged yet. Add a note after your next call or meeting.",
+      "composerLabel": "Log an activity",
+      "typeLabel": "Type",
+      "placeholder": "What happened?",
+      "types": {
+        "note": "Note",
+        "call": "Call",
+        "email": "Email",
+        "meeting": "Meeting"
+      },
+      "log": "Log activity",
+      "saving": "Logging…",
+      "stageChange": "{deal} moved from {from} to {to}",
+      "dealCreated": "{deal} added as {to}",
+      "created": "Added to contacts",
+      "onDeal": "{deal}",
+      "delete": "Delete this entry",
+      "deleteFailed": "The entry wasn't deleted. Try again.",
+      "errors": {
+        "body": "Write what happened.",
+        "generic": "The activity wasn't saved. Check your connection and try again."
+      }
+    }
   }
 }

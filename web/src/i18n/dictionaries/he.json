@@ -168,5 +168,82 @@
       }
     },
     "newIn": "עסקה חדשה בשלב {stage}"
+  },
+  "contact": {
+    "back": "כל אנשי הקשר",
+    "edit": "עריכת איש קשר",
+    "details": "פרטים",
+    "email": "אימייל",
+    "phone": "טלפון",
+    "company": "חברה",
+    "position": "תפקיד",
+    "source": "מאיפה הגיעו",
+    "tags": "תגיות",
+    "added": "נוסף",
+    "none": "—",
+    "loading": "טוענים את איש הקשר…",
+    "notFoundTitle": "איש הקשר לא נמצא",
+    "notFoundBody": "ייתכן שהוא נמחק, או שהקישור שגוי.",
+    "deals": {
+      "title": "עסקאות",
+      "empty": "עדיין אין עסקאות עם איש הקשר הזה.",
+      "openBoard": "ללוח העסקאות",
+      "total": "{count} עסקאות, {won} נסגרו בהצלחה"
+    },
+    "tasks": {
+      "title": "משימות",
+      "empty": "אין משימות פתוחות.",
+      "add": "הוספת משימה",
+      "newLabel": "משימה חדשה",
+      "titleLabel": "משימה",
+      "titlePlaceholder": "לחזור אליו לגבי ההצעה",
+      "due": "תאריך יעד",
+      "priority": "עדיפות",
+      "priorities": {
+        "low": "נמוכה",
+        "medium": "בינונית",
+        "high": "גבוהה"
+      },
+      "dueOn": "עד {date}",
+      "overdue": "באיחור מאז {date}",
+      "doneOn": "בוצעה ב־{date}",
+      "forDeal": "עבור {deal}",
+      "markDone": "סימון „{title}” כבוצעה",
+      "markOpen": "סימון „{title}” כלא בוצעה",
+      "delete": "מחיקת המשימה „{title}”",
+      "completed": "בוצעו ({count})",
+      "saving": "מוסיפים…",
+      "failed": "השינוי לא נשמר. נסו שוב.",
+      "errors": {
+        "title": "כתבו מה צריך לעשות.",
+        "generic": "המשימה לא נוספה. בדקו את החיבור ונסו שוב."
+      },
+      "cancel": "ביטול"
+    },
+    "timeline": {
+      "title": "פעילות",
+      "empty": "עדיין לא נרשם כלום. הוסיפו הערה אחרי השיחה או הפגישה הבאה.",
+      "composerLabel": "רישום פעילות",
+      "typeLabel": "סוג",
+      "placeholder": "מה קרה?",
+      "types": {
+        "note": "הערה",
+        "call": "שיחה",
+        "email": "אימייל",
+        "meeting": "פגישה"
+      },
+      "log": "רישום פעילות",
+      "saving": "רושמים…",
+      "stageChange": "{deal} עברה משלב {from} לשלב {to}",
+      "dealCreated": "{deal} נוספה בשלב {to}",
+      "created": "נוסף לאנשי הקשר",
+      "onDeal": "{deal}",
+      "delete": "מחיקת הרשומה",
+      "deleteFailed": "הרשומה לא נמחקה. נסו שוב.",
+      "errors": {
+        "body": "כתבו מה קרה.",
+        "generic": "הפעילות לא נשמרה. בדקו את החיבור ונסו שוב."
+      }
+    }
   }
 }

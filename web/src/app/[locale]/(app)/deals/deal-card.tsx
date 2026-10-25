@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import type { ReactNode } from "react";
 import { format, type Locale } from "@/i18n/config";
 import type { Dictionary } from "@/i18n/get-dictionary";
@@ -30,7 +31,7 @@ export function DealCard({
   onOpen?: () => void;
   lifted?: boolean;
 }) {
-  const who = [contactName(deal), deal.company?.name].filter(Boolean).join(", ");
+  const person = contactName(deal);
   const overdue = kind === "open" && deal.expected_close_date !== null && deal.expected_close_date < today;
 
   let dateLine: string | null = null;
@@ -63,7 +64,16 @@ export function DealCard({
       </div>
 
       <p className="mt-1 truncate text-sm text-muted">
-        <bdi>{who || t.noContact}</bdi>
+        {person && deal.contact && onOpen ? (
+          <Link href={`/${locale}/contacts/${deal.contact.id}`} className="hover:text-brand hover:underline">
+            <bdi>{person}</bdi>
+          </Link>
+        ) : (
+          person && <bdi>{person}</bdi>
+        )}
+        {person && deal.company && ", "}
+        {deal.company && <bdi>{deal.company.name}</bdi>}
+        {!person && !deal.company && t.noContact}
       </p>
 
       <div className="mt-3 flex items-baseline justify-between gap-2">

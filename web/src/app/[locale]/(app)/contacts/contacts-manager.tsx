@@ -1,25 +1,18 @@
 "use client";
 
+import Link from "next/link";
 import { useState, type ReactNode } from "react";
 import type { Dictionary } from "@/i18n/get-dictionary";
-import { format } from "@/i18n/config";
-import type { ContactListItem, ContactStatus } from "@/lib/data/contacts";
+import type { ContactListItem } from "@/lib/data/contacts";
+import { StatusBadge } from "@/components/status-badge";
+import { fullName } from "@/lib/names";
 import { ContactDialog } from "./contact-dialog";
 
 export type ContactRow = ContactListItem & { added: string };
 export type CompanyOption = { id: string; name: string };
 
-const statusStyle: Record<ContactStatus, string> = {
-  lead: "bg-lead-soft text-lead",
-  customer: "bg-brand-soft text-brand",
-  inactive: "bg-inactive-soft text-inactive",
-};
-
-export function fullName(c: { first_name: string; last_name: string | null }) {
-  return [c.first_name, c.last_name].filter(Boolean).join(" ");
-}
-
 export function ContactsManager({
+  basePath,
   countLabel,
   toolbar,
   rows,
@@ -27,6 +20,7 @@ export function ContactsManager({
   t,
   emptyMessage,
 }: {
+  basePath: string;
   countLabel: string;
   toolbar: ReactNode;
   rows: ContactRow[];
@@ -34,8 +28,7 @@ export function ContactsManager({
   t: Dictionary["contacts"];
   emptyMessage: string | null;
 }) {
-  // null = closed, "new" = create form, otherwise the contact being edited
-  const [open, setOpen] = useState<"new" | ContactRow | null>(null);
+  const [creating, setCreating] = useState(false);
 
   return (
     <>
@@ -43,7 +36,7 @@ export function ContactsManager({
         <p className="text-muted">{countLabel}</p>
         <button
           type="button"
-          onClick={() => setOpen("new")}
+          onClick={() => setCreating(true)}
           className="rounded-md bg-brand px-4 py-2.5 font-medium text-brand-ink transition-colors hover:bg-brand-hover"
         >
           {t.new}
@@ -53,7 +46,7 @@ export function ContactsManager({
       <div className="mt-6 mb-5">{toolbar}</div>
 
       {rows.length === 0 ? (
-        <EmptyState t={t} message={emptyMessage} onCreate={() => setOpen("new")} />
+        <EmptyState t={t} message={emptyMessage} onCreate={() => setCreating(true)} />
       ) : (
         <div className="overflow-hidden rounded-lg border border-line bg-surface">
           <table className="w-full text-start text-[15px]">
@@ -71,14 +64,9 @@ export function ContactsManager({
               {rows.map((c) => (
                 <tr key={c.id} className="hover:bg-paper/60">
                   <td className="px-4 py-3">
-                    <button
-                      type="button"
-                      onClick={() => setOpen(c)}
-                      aria-label={format(t.edit, { name: fullName(c) })}
-                      className="text-start font-medium hover:text-brand hover:underline"
-                    >
+                    <Link href={`${basePath}/${c.id}`} className="font-medium hover:text-brand hover:underline">
                       <bdi>{fullName(c)}</bdi>
-                    </button>
+                    </Link>
                     {c.position && <div className="text-sm text-muted"><bdi>{c.position}</bdi></div>}
                   </td>
                   <td className="hidden px-4 py-3 sm:table-cell"><bdi>{c.company?.name ?? "—"}</bdi></td>
@@ -89,9 +77,7 @@ export function ContactsManager({
                     {c.phone ? <a href={`tel:${c.phone}`} className="whitespace-nowrap text-muted hover:text-brand"><bdi>{c.phone}</bdi></a> : "—"}
                   </td>
                   <td className="px-4 py-3">
-                    <span className={`inline-block rounded-full px-2.5 py-0.5 text-sm font-medium ${statusStyle[c.status]}`}>
-                      {t.status[c.status]}
-                    </span>
+                    <StatusBadge status={c.status} label={t.status[c.status]} />
                   </td>
                   <td className="hidden whitespace-nowrap px-4 py-3 text-muted xl:table-cell">{c.added}</td>
                 </tr>
@@ -101,15 +87,7 @@ export function ContactsManager({
         </div>
       )}
 
-      {open && (
-        <ContactDialog
-          key={open === "new" ? "new" : open.id}
-          contact={open === "new" ? null : open}
-          companies={companies}
-          t={t}
-          onClose={() => setOpen(null)}
-        />
-      )}
+      {creating && <ContactDialog contact={null} companies={companies} t={t} onClose={() => setCreating(false)} />}
     </>
   );
 }
