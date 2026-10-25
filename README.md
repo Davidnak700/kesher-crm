@@ -68,7 +68,7 @@ web/
 
 ## Deploy
 
-Import the repo into Vercel with **Root Directory = `web`**, add the same four environment variables, deploy. In Supabase → Authentication → URL Configuration add the Vercel URL as the Site URL.
+Import the repo into Vercel with **Root Directory = `web`**, add the same four environment variables, deploy. `web/vercel.json` pins the server functions to Frankfurt (`fra1`), next to the Supabase database; change it if your database lives elsewhere. In Supabase → Authentication → URL Configuration add the Vercel URL as the Site URL.
 
 ## Design decisions worth reading
 
