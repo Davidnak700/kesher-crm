@@ -39,6 +39,7 @@ Analytics views: `closed_deals` (one row per won or lost deal with its cycle len
 - **`on delete set null (contact_id)`** (PostgreSQL 15+) clears only the link column, not `owner_id`.
 - **Triggers, not app code, own the business rules:** a new user gets a profile and default pipeline; moving a deal to Won/Lost stamps `closed_at`; every stage change is logged for analytics.
 - **Views use `security_invoker`**, so dashboards respect RLS.
+- **Functions have a fixed `search_path`**, and internal trigger functions can't be called through the API. The Supabase security advisor reports no issues in the schema.
 - **Bilingual by design:** UI text is translated from stage keys; user data is stored as typed, so Hebrew and English sit side by side.
 
 ## Setup
@@ -60,6 +61,10 @@ psql -d crm_test -f tests/supabase_stub.sql \
   -f migrations/20261025000000_init_schema.sql \
   -f migrations/20261025000100_demo_data.sql \
   -f migrations/20261025000300_analytics.sql \
+  -f migrations/20261025000400_security_hardening.sql \
   -f tests/rls_test.sql \
-  -f tests/analytics_test.sql
+  -f tests/analytics_test.sql \
+  -f tests/security_test.sql
 ```
+
+`security_test.sql` checks the hardening migration: sign-up and the deal triggers still work with a fixed `search_path`, and users can't call the internal `handle_new_user()` function through the API.
