@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+/* Kesher design tokens — evergreen brand on cool paper, one family (Rubik) for Hebrew and Latin. */
+:root {
+  --paper: #f3f5f7;
+  --surface: #ffffff;
+  --ink: #18212f;
+  --muted: #5a6474;
+  --line: #dce1e7;
+  --brand: #0e5e52;
+  --brand-hover: #0b4c42;
+  --brand-ink: #ffffff;
+  --brand-soft: #e2efeb;
+  --rail: #0e5e52;
+  --rail-ink: #e9f4f1;
+  --rail-muted: #a7cbc3;
+  --rail-active: #0a463d;
+  --lead: #8a520a;
+  --lead-soft: #fbefd9;
+  --inactive: #5b6472;
+  --inactive-soft: #eceff3;
+  --danger: #b42318;
+  --danger-soft: #fdecea;
+  --danger-ink: #ffffff;
+  --focus: #1f7a6b;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #0f1419;
+    --surface: #161d24;
+    --ink: #e6ebf0;
+    --muted: #96a1af;
+    --line: #27313b;
+    --brand: #43b8a2;
+    --brand-hover: #5cc8b3;
+    --brand-ink: #062a24;
+    --brand-soft: #143a33;
+    --rail: #0b2f29;
+    --rail-ink: #e2f1ed;
+    --rail-muted: #8db8ae;
+    --rail-active: #12453c;
+    --lead: #eab86b;
+    --lead-soft: #3a2b12;
+    --inactive: #a8b2bf;
+    --inactive-soft: #232b33;
+    --danger: #f97066;
+    --danger-soft: #3b1714;
+    --danger-ink: #2a0b08;
+    --focus: #5cc8b3;
+    color-scheme: dark;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-hover: var(--brand-hover);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-rail: var(--rail);
+  --color-rail-ink: var(--rail-ink);
+  --color-rail-muted: var(--rail-muted);
+  --color-rail-active: var(--rail-active);
+  --color-lead: var(--lead);
+  --color-lead-soft: var(--lead-soft);
+  --color-inactive: var(--inactive);
+  --color-inactive-soft: var(--inactive-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-danger-ink: var(--danger-ink);
+  --font-sans: "Rubik Variable", system-ui, sans-serif;
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "tnum" 1; /* aligned numbers in tables */
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+dialog::backdrop {
+  background: rgb(10 20 25 / 0.45);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog[open] {
+    animation: dialog-in 160ms ease-out;
+  }
+}
+
+@keyframes dialog-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "meta": {
+    "title": "Kesher CRM",
+    "description": "Clients, deals and tasks in one place."
+  },
+  "nav": {
+    "label": "Main",
+    "dashboard": "Dashboard",
+    "contacts": "Contacts",
+    "deals": "Deals",
+    "tasks": "Tasks",
+    "signOut": "Sign out",
+    "switchLanguage": "עברית",
+    "switchLanguageLabel": "Switch to Hebrew"
+  },
+  "auth": {
+    "title": "Sign in",
+    "subtitle": "Clients, deals and tasks in one place.",
+    "email": "Email",
+    "password": "Password",
+    "submit": "Sign in",
+    "submitting": "Signing in…",
+    "or": "or",
+    "demo": "Open the demo account",
+    "demoHint": "Filled with six months of sample data. Nothing you change affects anyone else.",
+    "invalid": "Email or password is incorrect.",
+    "demoUnavailable": "The demo account isn't set up on this server."
+  },
+  "contacts": {
+    "title": "Contacts",
+    "count": "{count} contacts",
+    "new": "New contact",
+    "search": "Search contacts",
+    "searchPlaceholder": "Name, email or phone",
+    "filterLabel": "Filter by status",
+    "filters": {
+      "all": "All",
+      "lead": "Leads",
+      "customer": "Customers",
+      "inactive": "Inactive"
+    },
+    "columns": {
+      "name": "Name",
+      "company": "Company",
+      "email": "Email",
+      "phone": "Phone",
+      "status": "Status",
+      "added": "Added"
+    },
+    "status": {
+      "lead": "Lead",
+      "customer": "Customer",
+      "inactive": "Inactive"
+    },
+    "source": {
+      "website": "Website",
+      "referral": "Referral",
+      "social": "Social media",
+      "ads": "Ads",
+      "event": "Event",
+      "cold": "Cold outreach",
+      "other": "Other"
+    },
+    "emptyTitle": "No contacts yet",
+    "emptyBody": "Add your first contact to start tracking deals with them.",
+    "noResults": "No contacts match “{q}”.",
+    "noResultsFiltered": "No contacts with this status.",
+    "clearSearch": "Clear search",
+    "loading": "Loading contacts…",
+    "loadError": "Contacts couldn't be loaded. Refresh the page to try again.",
+    "edit": "Edit {name}",
+    "form": {
+      "createTitle": "New contact",
+      "editTitle": "Edit contact",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "phone": "Phone",
+      "position": "Role",
+      "company": "Company",
+      "noCompany": "No company",
+      "status": "Status",
+      "source": "Where they came from",
+      "noSource": "Not set",
+      "tags": "Tags",
+      "tagsHint": "Separate tags with commas",
+      "create": "Add contact",
+      "save": "Save changes",
+      "saving": "Saving…",
+      "cancel": "Cancel",
+      "close": "Close",
+      "delete": "Delete contact",
+      "confirmDelete": "Delete {name}? Their deals and tasks stay, without a contact attached.",
+      "errors": {
+        "firstName": "Enter a first name.",
+        "email": "Enter a valid email or leave the field empty.",
+        "generic": "The contact wasn't saved. Check your connection and try again."
+      }
+    },
+    "pagination": {
+      "label": "Pages",
+      "prev": "Previous",
+      "next": "Next",
+      "page": "Page {page} of {pages}"
+    }
+  },
+  "placeholder": {
+    "title": "Coming in the next step",
+    "body": "This section is planned and will be built after contacts."
+  }
+}
