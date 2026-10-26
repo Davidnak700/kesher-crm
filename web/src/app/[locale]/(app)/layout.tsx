@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { LogOut } from "lucide-react";
 import { Wordmark } from "@/components/wordmark";
 import { LanguageSwitch } from "@/components/language-switch";
 import { getDictionary, getLocale } from "@/i18n/get-dictionary";
@@ -32,13 +33,16 @@ export default async function AppLayout({ children }: LayoutProps<"/[locale]">) 
             locale={locale}
             label={dict.nav.switchLanguage}
             ariaLabel={dict.nav.switchLanguageLabel}
-            className="block rounded-md px-3 py-2 text-[15px] text-rail-muted hover:bg-rail-active/60 hover:text-rail-ink"
+            icon
+            className="flex items-center gap-2.5 rounded-md px-3 py-2 text-[15px] text-rail-muted hover:bg-rail-active/60 hover:text-rail-ink"
           />
           <form action={signOut.bind(null, locale)}>
             <button
               type="submit"
-              className="w-full rounded-md px-3 py-2 text-start text-[15px] text-rail-muted hover:bg-rail-active/60 hover:text-rail-ink"
+              className="flex w-full items-center gap-2.5 rounded-md px-3 py-2 text-start text-[15px] text-rail-muted hover:bg-rail-active/60 hover:text-rail-ink"
             >
+              {/* the arrow points out of the page, so it flips in right-to-left */}
+              <LogOut aria-hidden="true" className="size-[18px] shrink-0 rtl:-scale-x-100" strokeWidth={1.75} />
               {dict.nav.signOut}
             </button>
           </form>

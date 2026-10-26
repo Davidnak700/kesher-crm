@@ -39,7 +39,7 @@ export async function DashboardView() {
   const t = dict.dashboard;
   const currency = "ILS";
   const money = (n: number) => formatMoney(n, currency, locale);
-  const compactMoney = new Intl.NumberFormat(numberLocale[locale], { style: "currency", currency, notation: "compact", maximumFractionDigits: 1 });
+  const compactMoney = new Intl.NumberFormat(numberLocale[locale], { style: "currency", currency, notation: "compact", minimumFractionDigits: 0, maximumFractionDigits: 1 });
   const stageLabel = (key: string | null, name: string | null) =>
     (key && dict.deals.stages[key as keyof Dictionary["deals"]["stages"]]) || name || "";
 
@@ -195,10 +195,11 @@ export async function DashboardView() {
                 <span className="truncate text-sm">{stageLabel(row.key, row.name)}</span>
                 <div className="flex items-center gap-3">
                   <div className="h-5 rounded-e bg-chart" style={{ width: `max(${width}%, 4px)` }} aria-hidden="true" />
-                  <span className="shrink-0 text-sm">
+                  {/* flex, not inline spans: two numbers side by side would merge in right-to-left text */}
+                  <span className="flex shrink-0 gap-2 text-sm">
                     <span className="font-semibold tabular-nums">{reached}</span>
                     {conversion !== null && (
-                      <span className="ms-2 text-muted">{format(t.funnel.conversion, { pct: Math.round(conversion * 100) })}</span>
+                      <span className="text-muted">{format(t.funnel.conversion, { pct: Math.round(conversion * 100) })}</span>
                     )}
                   </span>
                 </div>

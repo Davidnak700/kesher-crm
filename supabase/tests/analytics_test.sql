@@ -32,6 +32,30 @@ begin
   raise notice 'PASS: timeline consistent';
 end $$;
 
+\echo '--- every client is in one language (every count must be 0)'
+do $$
+declare r record; bad int := 0;
+begin
+  -- "he" = contains Hebrew letters; a record is mixed if it doesn't match its contact
+  for r in
+    with c as (select id, company_id, first_name ~ '[א-ת]' he, position from contacts)
+    select 'contact position in the other language' chk, count(*) n from c where (c.position ~ '[א-ת]') <> c.he
+    union all select 'contact at a company in the other language', count(*) from c join companies co on co.id = c.company_id where (co.name ~ '[א-ת]') <> c.he
+    union all select 'deal title in the other language', count(*) from deals d join c on c.id = d.contact_id
+      where case when c.he then d.title ~ '[A-Za-z]' else d.title ~ '[א-ת]' end
+    union all select 'deal task in the other language', count(*) from tasks t join deals d on d.id = t.deal_id join c on c.id = d.contact_id
+      where (t.title ~ '[א-ת]') <> c.he
+    union all select 'contact task in the other language', count(*) from tasks t join c on c.id = t.contact_id where (t.title ~ '[א-ת]') <> c.he
+    union all select 'activity in the other language', count(*) from activities a join c on c.id = a.contact_id where (a.body ~ '[א-ת]') <> c.he
+    union all select 'no Hebrew-speaking clients', (count(*) filter (where he) = 0)::int from c
+    union all select 'no English-speaking clients', (count(*) filter (where not he) = 0)::int from c
+  loop
+    if r.n <> 0 then raise warning 'FAIL: % (% rows)', r.chk, r.n; bad := bad + 1; end if;
+  end loop;
+  if bad > 0 then raise exception '% language checks failed', bad; end if;
+  raise notice 'PASS: every client, deal, task and note is in one language';
+end $$;
+
 \echo '--- sales_cycle_summary'
 select * from sales_cycle_summary order by outcome desc;
 

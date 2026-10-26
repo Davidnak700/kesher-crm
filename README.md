@@ -11,6 +11,8 @@ Built as a portfolio project with Next.js 16 and Supabase.
 |---|---|
 | ![Kanban deals board in Hebrew](docs/screenshots/deals-he.jpg) | ![Dashboard in Hebrew](docs/screenshots/dashboard-he.jpg) |
 
+![Contacts list in English](docs/screenshots/contacts-en.jpg)
+
 ![Analytics page in English](docs/screenshots/analytics-en.jpg)
 
 The demo data is synthetic: about six months of a small agency's contacts and deals, generated with a few built-in patterns (referrals convert best, proposals are the slow stage) so the analytics have something to find.

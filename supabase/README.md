@@ -50,11 +50,11 @@ Analytics views: `closed_deals` (one row per won or lost deal with its cycle len
    ```sql
    select public.seed_demo_data((select id from auth.users where email = 'demo@yourdomain.com'));
    ```
-   This fills the account with ~6 months of synthetic data: 12 companies, 40 contacts, 64 deals, tasks and activities. Every timeline is consistent (a deal starts after its contact, stages pass in order, nothing is in the future), and a few patterns are built in for the analytics: referrals convert best, ads worst, and proposals are the slow stage. Run it again any time to reset the demo; the nightly `pg_cron` job does this for the shared demo account.
+   This fills the account with ~6 months of synthetic data: 12 companies, 40 contacts, 64 deals, tasks and activities. Every timeline is consistent (a deal starts after its contact, stages pass in order, nothing is in the future), and a few patterns are built in for the analytics: referrals convert best, ads worst, and proposals are the slow stage. Every client is in one language: a Hebrew-speaking contact has a Hebrew position, company, deals, tasks and notes, and an English-speaking one has English. Run it again any time to reset the demo; the nightly `pg_cron` job does this for the shared demo account.
 
 ## Tests
 
-`tests/` runs the migrations on plain PostgreSQL with a small Supabase Auth stub and checks isolation between users, the composite keys, the stage triggers and the views. `analytics_test.sql` checks that the demo timelines are consistent, that the analytics views match hand counts, and that no one sees another user's analytics. (The `pg_cron` migration needs Supabase and is skipped here.)
+`tests/` runs the migrations on plain PostgreSQL with a small Supabase Auth stub and checks isolation between users, the composite keys, the stage triggers and the views. `analytics_test.sql` checks that the demo timelines are consistent and every client is in one language, that the analytics views match hand counts, and that no one sees another user's analytics. (The `pg_cron` migration needs Supabase and is skipped here.)
 
 ```bash
 psql -d crm_test -f tests/supabase_stub.sql \
@@ -62,6 +62,7 @@ psql -d crm_test -f tests/supabase_stub.sql \
   -f migrations/20261025000100_demo_data.sql \
   -f migrations/20261025000300_analytics.sql \
   -f migrations/20261025000400_security_hardening.sql \
+  -f migrations/20261026000000_demo_data_languages.sql \
   -f tests/rls_test.sql \
   -f tests/analytics_test.sql \
   -f tests/security_test.sql
